@@ -1,0 +1,60 @@
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/* Same 5-column layout for the header labels and every partner row. */
+.partner-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.6fr 1fr 32px;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* ---------- Allocation bar ---------- */
+.allocation__summary {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.allocation__bar {
+  height: 8px;
+  border-radius: 99px;
+  background: #e6e8ed;
+  display: flex;
+  overflow: hidden;
+  margin: 10px 0 6px;
+}
+
+.allocation__bar i {
+  display: block;
+  height: 100%;
+}
+
+.allocation__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.allocation__swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+@media (max-width: 800px) {
+  .partner-grid {
+    grid-template-columns: 1fr;
+  }
+}
