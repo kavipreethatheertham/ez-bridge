@@ -35,6 +35,16 @@
   background: var(--zebra);
 }
 
+/* Row highlight on hover (same specificity as the zebra rule above, so it comes after it). */
+.payout-table tbody tr:hover td {
+  background: var(--accent-soft);
+}
+
+/* The Total column reads as the answer. */
+.payout-table tbody td.num:last-child {
+  font-weight: 600;
+}
+
 .payout-table__empty {
   color: var(--muted);
   text-align: center !important;

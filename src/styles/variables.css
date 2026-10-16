@@ -1,23 +1,56 @@
-/* Design tokens: change a colour here and it changes everywhere. */
+/*
+  Design tokens: "Khata" warm light theme.
+  Warm paper surfaces, espresso ink, a madder-wine accent (the red of a ledger
+  book's cloth binding) and marigold highlights in the allocation bar.
+  Change a value here and it changes everywhere.
+*/
 :root {
-  --bg: #f4f5f7;
-  --surface: #ffffff;
-  --ink: #1a1d23;
-  --muted: #5c6570;
-  --faint: #8b939e;
-  --line: #e2e5ea;
-  --line-strong: #cfd4dc;
-  --accent: #1f4fd8;
-  --accent-ink: #ffffff;
-  --accent-soft: #e7eefc;
-  --ok: #0f7a45;
-  --ok-bg: #e8f6ee;
-  --ok-ink: #0c5c34;
+  color-scheme: light;
+
+  /* ---------- Typography ---------- */
+  --font-body: 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Cambria, Georgia, serif;
+
+  /* ---------- Surfaces ---------- */
+  --bg: #f8f2ea; /* page background: warm alabaster */
+  --surface: #fffdf9; /* cards, inputs, table */
+  --zebra: #fbf6ee; /* alternate table rows, table header */
+  --disabled-bg: #f3ebe1; /* read-only / calculated fields */
+  --track: #eadfd2; /* empty part of the allocation bar */
+  --chip: #f0e6da; /* neutral pill (Draft, Open) */
+
+  /* ---------- Text ---------- */
+  --ink: #2a1f1c; /* main text: warm espresso */
+  --muted: #6a5950; /* hints and secondary text */
+  --faint: #7d6b61; /* small column labels */
+
+  /* ---------- Lines ---------- */
+  --line: #eadfd3;
+  --line-strong: #d6c5b5;
+  --line-hover: #b79f8f; /* input border on hover */
+
+  /* ---------- Accent: madder wine ---------- */
+  --accent: #8c2f3b;
+  --accent-hover: #6f222d; /* primary button on hover */
+  --accent-strong: #7a2733; /* accent text on soft backgrounds */
+  --accent-ink: #fffaf5; /* text on the accent colour */
+  --accent-soft: #f6e4e1; /* hover and active-pill background */
+  --accent-soft-active: #efd3d0; /* pressed state, text selection */
+
+  /* ---------- Status ---------- */
+  --ok: #3d6b46;
+  --ok-bg: #e7efe1;
+  --ok-ink: #2a4d31;
+  --ok-line: #c9dcc0;
   --warn: #8a5a00;
-  --warn-bg: #fff6e0;
-  --warn-ink: #6d4700;
-  --chip: #eef1f6;
-  --zebra: #fafbfc;
-  --disabled-bg: #f3f4f6;
+  --warn-bg: #fbeecf;
+  --warn-ink: #6a4300;
+  --warn-line: #ecd6a0;
+
+  /* ---------- Shape, depth, motion ---------- */
   --radius: 10px;
+  --shadow-card: 0 1px 2px rgba(74, 38, 30, 0.05), 0 10px 24px -14px rgba(74, 38, 30, 0.18);
+  --shadow-hover: 0 3px 10px -2px rgba(74, 38, 30, 0.18);
+  --shadow-accent: 0 4px 12px -2px rgba(140, 47, 59, 0.32);
+  --ease: 0.18s ease;
 }

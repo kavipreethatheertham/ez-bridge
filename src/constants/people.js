@@ -14,4 +14,4 @@ export const PEOPLE = [
 export const PERSON_ORDER = PEOPLE.map((p) => p.id)
 
 /** Colours used for each sharing-partner segment in the allocation bar. */
-export const BAR_COLORS = ['#3b6fd8', '#7a4cc2', '#1f8a4c', '#d97816', '#c44b78', '#c4a012']
+export const BAR_COLORS = ['#8c2f3b', '#2f6f73', '#c0820f', '#4b5f9e', '#6b7f3a', '#7a4a78']
