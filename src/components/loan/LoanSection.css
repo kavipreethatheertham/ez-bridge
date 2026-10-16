@@ -1,0 +1,12 @@
+.loan-fields {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  align-items: end;
+}
+
+@media (max-width: 800px) {
+  .loan-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+}
