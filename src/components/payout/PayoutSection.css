@@ -1,0 +1,41 @@
+.payout-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.payout-table th,
+.payout-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.payout-table th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 12px;
+  background: var(--zebra);
+}
+
+.payout-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.payout-table tr:last-child td {
+  border-bottom: none;
+}
+
+.payout-table tbody tr:nth-child(even) td {
+  background: var(--zebra);
+}
+
+.payout-table__empty {
+  color: var(--muted);
+  text-align: center !important;
+}
