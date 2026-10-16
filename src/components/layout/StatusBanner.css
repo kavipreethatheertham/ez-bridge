@@ -1,0 +1,21 @@
+.status-banner {
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+.status-banner strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.status-banner.ok {
+  background: var(--ok-bg);
+  color: var(--ok-ink);
+}
+
+.status-banner.warn {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}

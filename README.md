@@ -1,16 +1,57 @@
-# React + Vite
+# Eazee Bridge — Annexure Sheet (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + Vite frontend for the Eazee Bridge annexure sheet. A loan (e.g. `LN0025`) is shared between
+partners; each partner earns interest on their share. This app captures that and shows the payout
+per person.
 
-Currently, two official plugins are available:
+## Scope of this milestone
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Section | Status |
+| --- | --- |
+| Loan | Done |
+| Sharing partners | Done |
+| Payout by person | Done (sharing interest only) |
+| Case fees, Consultancy, Eazee Bridge | Next |
+| Supabase backend | Next |
 
-## React Compiler
+## Run it
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build into dist/
+npm run lint
+```
 
-## Expanding the Oxlint configuration
+## Project structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```
+src/
+├── main.jsx                      # entry point, loads global CSS and <App />
+├── App.jsx                       # page layout: wires the hook to the sections
+├── components/
+│   ├── common/                   # reusable pieces (Field, PersonSelect, Pill)
+│   ├── layout/                   # AnnexureHeader, StatusBanner
+│   ├── loan/                     # LoanSection
+│   ├── sharing/                  # SharingPartnersSection, PartnerRow, AllocationBar
+│   └── payout/                   # PayoutSection
+├── hooks/useAnnexure.js          # ALL state + actions (add/remove/update/save/reset)
+├── utils/
+│   ├── money.js                  # toNumber, formatINR, isSameAmount
+│   └── calculations.js           # interest, loan summary, payout rows
+├── constants/people.js           # people list + bar colours
+├── data/sampleAnnexure.js        # LN0025 sample data
+└── styles/                       # variables.css (tokens) + global.css (base)
+```
+
+## How the data flows
+
+`useAnnexure()` holds the form state → `utils/calculations.js` derives numbers → `App.jsx` passes
+data and callbacks down → section components only render and call callbacks.
+
+## Calculations
+
+- Interest amount = amount × interest % ÷ 100
+- Sharing partners "cover the loan" when the sum of partner amounts equals the loan amount
+- Payout per person = sum of that person's sharing interest (case fees, consultancy and bridge
+  will be added to the same row later)
