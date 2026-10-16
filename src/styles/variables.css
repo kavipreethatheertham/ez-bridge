@@ -1,7 +1,8 @@
 /*
-  Design tokens: "Khata" warm light theme.
-  Warm paper surfaces, espresso ink, a madder-wine accent (the red of a ledger
-  book's cloth binding) and marigold highlights in the allocation bar.
+  Design tokens: "Trust Anchor" classic fintech blue.
+  Deep navy, corporate slate blue, crisp white and emerald green.
+  Emerald is used only for success and money (Ready/Allocated pills,
+  the success banner and the Total column in Payout by person).
   Change a value here and it changes everywhere.
 */
 :root {
@@ -9,48 +10,52 @@
 
   /* ---------- Typography ---------- */
   --font-body: 'Segoe UI', system-ui, sans-serif;
-  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Cambria, Georgia, serif;
+
+  /* ---------- Brand palette ---------- */
+  --navy: #0b2545; /* deep navy: headings, primary button, table header */
+  --slate: #3d5a80; /* corporate slate blue: focus ring, secondary accents */
+  --emerald: #0f8a5f; /* emerald green: success and payments */
 
   /* ---------- Surfaces ---------- */
-  --bg: #f8f2ea; /* page background: warm alabaster */
-  --surface: #fffdf9; /* cards, inputs, table */
-  --zebra: #fbf6ee; /* alternate table rows, table header */
-  --disabled-bg: #f3ebe1; /* read-only / calculated fields */
-  --track: #eadfd2; /* empty part of the allocation bar */
-  --chip: #f0e6da; /* neutral pill (Draft, Open) */
+  --bg: #f2f5f9; /* page background: cool, pale blue-grey */
+  --surface: #ffffff; /* crisp white: cards, inputs, table */
+  --zebra: #f7f9fc; /* alternate table rows */
+  --disabled-bg: #eef2f7; /* read-only / calculated fields */
+  --track: #dde5ee; /* empty part of the allocation bar */
+  --chip: #e8edf4; /* neutral pill (Draft, Open) */
 
   /* ---------- Text ---------- */
-  --ink: #2a1f1c; /* main text: warm espresso */
-  --muted: #6a5950; /* hints and secondary text */
-  --faint: #7d6b61; /* small column labels */
+  --ink: #0d2240; /* main text: deep navy ink */
+  --muted: #3f5573; /* hints and secondary text */
+  --faint: #566b85; /* small column labels */
 
   /* ---------- Lines ---------- */
-  --line: #eadfd3;
-  --line-strong: #d6c5b5;
-  --line-hover: #b79f8f; /* input border on hover */
+  --line: #dfe6ee;
+  --line-strong: #c3cfdc;
+  --line-hover: #8fa3b8; /* input border on hover */
 
-  /* ---------- Accent: madder wine ---------- */
-  --accent: #8c2f3b;
-  --accent-hover: #6f222d; /* primary button on hover */
-  --accent-strong: #7a2733; /* accent text on soft backgrounds */
-  --accent-ink: #fffaf5; /* text on the accent colour */
-  --accent-soft: #f6e4e1; /* hover and active-pill background */
-  --accent-soft-active: #efd3d0; /* pressed state, text selection */
+  /* ---------- Accent: deep navy ---------- */
+  --accent: #0b2545;
+  --accent-hover: #163e73; /* primary button on hover */
+  --accent-strong: #0b2545; /* accent text on soft backgrounds */
+  --accent-ink: #dce8f6; /* resting text on navy (turns pure white on hover) */
+  --accent-soft: #e9eff7; /* hover background */
+  --accent-soft-active: #d6e1ee; /* pressed state, text selection */
 
   /* ---------- Status ---------- */
-  --ok: #3d6b46;
-  --ok-bg: #e7efe1;
-  --ok-ink: #2a4d31;
-  --ok-line: #c9dcc0;
+  --ok: #0f8a5f;
+  --ok-bg: #e5f5ee;
+  --ok-ink: #0a5d41;
+  --ok-line: #bfe6d3;
   --warn: #8a5a00;
-  --warn-bg: #fbeecf;
-  --warn-ink: #6a4300;
-  --warn-line: #ecd6a0;
+  --warn-bg: #fdf3dc;
+  --warn-ink: #6b4a00;
+  --warn-line: #f0dba6;
 
   /* ---------- Shape, depth, motion ---------- */
-  --radius: 10px;
-  --shadow-card: 0 1px 2px rgba(74, 38, 30, 0.05), 0 10px 24px -14px rgba(74, 38, 30, 0.18);
-  --shadow-hover: 0 3px 10px -2px rgba(74, 38, 30, 0.18);
-  --shadow-accent: 0 4px 12px -2px rgba(140, 47, 59, 0.32);
+  --radius: 8px;
+  --shadow-card: 0 1px 2px rgba(11, 37, 69, 0.06), 0 8px 20px -12px rgba(11, 37, 69, 0.16);
+  --shadow-hover: 0 3px 10px -2px rgba(11, 37, 69, 0.18);
+  --shadow-accent: 0 4px 12px -2px rgba(11, 37, 69, 0.35);
   --ease: 0.18s ease;
 }

@@ -26,17 +26,17 @@ section {
 }
 
 h1 {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 600;
+  color: var(--navy);
+  font-size: 22px;
+  font-weight: 650;
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 650;
   margin: 0 0 4px;
 }
 
@@ -59,7 +59,7 @@ select {
   height: 32px;
   width: 100%;
   border: 1px solid var(--line-strong);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--surface);
   padding: 0 8px;
   transition: border-color var(--ease);
@@ -73,7 +73,7 @@ select:hover {
 input:focus-visible,
 select:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--slate);
   outline-offset: 1px;
 }
 
@@ -86,7 +86,7 @@ input:disabled {
 button {
   height: 32px;
   padding: 0 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--line-strong);
   background: var(--surface);
   cursor: pointer;
@@ -97,10 +97,10 @@ button {
     box-shadow var(--ease);
 }
 
-/* Hover: warm wine tint, wine border and text, soft shadow. Applies to every button. */
+/* Hover: pale slate-blue fill, navy border and text, soft shadow. Applies to every button. */
 button:hover:not(:disabled) {
   background: var(--accent-soft);
-  border-color: var(--accent);
+  border-color: var(--slate);
   color: var(--accent-strong);
   box-shadow: var(--shadow-hover);
 }
@@ -116,7 +116,7 @@ button.primary {
   border-color: var(--accent);
 }
 
-/* Primary hover: deeper wine fill, brighter text, tinted shadow. */
+/* Primary hover: brighter navy fill, white text, navy-tinted shadow. */
 button.primary:hover:not(:disabled) {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
@@ -125,7 +125,8 @@ button.primary:hover:not(:disabled) {
 }
 
 button.primary:active:not(:disabled) {
-  background: var(--accent-hover);
+  background: var(--accent);
+  border-color: var(--accent);
   box-shadow: none;
 }
 
@@ -160,15 +161,14 @@ button.icon-btn {
   border-radius: 999px;
   background: var(--chip);
   color: var(--muted);
-  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0;
 }
 
+/* Ready and Allocated are success states, so they use emerald. */
 .pill.on {
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  background: var(--ok-bg);
+  color: var(--ok-ink);
 }
 
 .field {

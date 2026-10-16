@@ -1,6 +1,7 @@
 .payout-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate; /* lets the rounded corners clip the navy header cleanly */
+  border-spacing: 0;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -15,11 +16,14 @@
   font-size: 13px;
 }
 
+/* Deep navy header row: the one bold element of the page. */
 .payout-table th {
-  color: var(--muted);
+  color: #fff;
   font-weight: 600;
   font-size: 12px;
-  background: var(--zebra);
+  background: var(--navy);
+  border-bottom-color: var(--navy);
+  box-shadow: 1px 0 0 var(--navy); /* hides the hairline some screens show between header cells */
 }
 
 .payout-table .num {
@@ -40,8 +44,9 @@
   background: var(--accent-soft);
 }
 
-/* The Total column reads as the answer. */
+/* The Total column is money paid out, so it is emerald and semi-bold. */
 .payout-table tbody td.num:last-child {
+  color: var(--ok-ink);
   font-weight: 600;
 }
 
