@@ -1,11 +1,10 @@
 import StatusBanner from './components/layout/StatusBanner'
 import LoanSection from './components/loan/LoanSection'
 import SharingPartnersSection from './components/sharing/SharingPartnersSection'
-import PayoutSection from './components/payout/PayoutSection'
 import { useAnnexure } from './hooks/useAnnexure'
 
 export default function App() {
-  const { form, isReady, loanSummary, payoutRows, actions } = useAnnexure()
+  const { form, isReady, loanSummary, actions } = useAnnexure()
 
   return (
     <main className="page">
@@ -26,8 +25,6 @@ export default function App() {
         onAdd={actions.addPartner}
         onRemove={actions.removePartner}
       />
-
-      <PayoutSection loanNo={form.loanNo} rows={payoutRows} />
     </main>
   )
 }
