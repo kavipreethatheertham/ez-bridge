@@ -41,6 +41,7 @@ export default function App() {
 
       <ConsultancySection
         consults={form.consults}
+        principal={loanSummary.principal}
         total={consultTotal}
         onChange={actions.updateConsult}
         onAdd={actions.addConsult}

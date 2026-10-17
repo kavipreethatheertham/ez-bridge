@@ -17,9 +17,9 @@ export function summarizeBridge({ bridgeTotal, splits }) {
   return { pool, splitTotal, matched: pool > 0 && isSameAmount(splitTotal, pool) }
 }
 
-/** What the consultants earn on this case: base amount x rate, added up over every consultant row. */
-export const totalConsultancy = (consults) =>
-  consults.reduce((sum, c) => sum + calcInterest(c.amount, c.rate), 0)
+/** What the consultants earn on this case: the loan principal x each consultant's rate, added up. */
+export const totalConsultancy = (consults, principal) =>
+  consults.reduce((sum, c) => sum + calcInterest(principal, c.rate), 0)
 
 /** The four tiles at the top of the sheet. `tone` is '' (plain), 'ok' (green) or 'warn' (amber). */
 export function buildStats({ loanRate }, loanSummary, bridge) {

@@ -16,7 +16,7 @@
 }
 
 .line-grid--consult {
-  grid-template-columns: 1.5fr 1fr 0.6fr 1fr 32px;
+  grid-template-columns: 1.5fr 0.6fr 1fr 32px;
 }
 
 .line-cell {
@@ -55,10 +55,6 @@
     justify-self: end;
   }
 
-  .line-grid--consult > .icon-btn {
-    grid-column: 2;
-  }
-
   /* A thin line and some air between one row and the next. */
   .line-grid__row + .line-grid__row {
     margin-top: 12px;
@@ -71,9 +67,5 @@
   .line-grid--fee,
   .line-grid--consult {
     grid-template-columns: 1fr;
-  }
-
-  .line-grid--consult > .icon-btn {
-    grid-column: 1;
   }
 }

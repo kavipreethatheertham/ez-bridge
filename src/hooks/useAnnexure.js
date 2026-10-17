@@ -72,7 +72,7 @@ export function useAnnexure() {
     setNextId((n) => n + 1)
     edit((prev) => ({
       ...prev,
-      consults: [...prev.consults, { id, person: '', amount: '', rate: '' }],
+      consults: [...prev.consults, { id, person: '', rate: '' }],
     }))
   }
 
@@ -94,7 +94,10 @@ export function useAnnexure() {
     () => buildStats(form, loanSummary, bridgeSummary),
     [form, loanSummary, bridgeSummary],
   )
-  const consultTotal = useMemo(() => totalConsultancy(form.consults), [form.consults])
+  const consultTotal = useMemo(
+    () => totalConsultancy(form.consults, loanSummary.principal),
+    [form.consults, loanSummary.principal],
+  )
 
   return {
     form,

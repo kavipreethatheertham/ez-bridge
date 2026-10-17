@@ -3,8 +3,8 @@ import { formatINR } from '../../utils/money'
 import '../common/LineGrid.css'
 import './ConsultancySection.css'
 
-/** Consultancy: fee is base amount x rate. Its own full-width card, below Case fees. */
-export default function ConsultancySection({ consults, total, onChange, onAdd, onRemove }) {
+/** Consultancy: fee is loan principal x rate. Its own full-width card, below Case fees. */
+export default function ConsultancySection({ consults, principal, total, onChange, onAdd, onRemove }) {
   return (
     <section className="card">
       <h2>Consultancy</h2>
@@ -14,14 +14,19 @@ export default function ConsultancySection({ consults, total, onChange, onAdd, o
 
       <div className="line-grid line-grid--consult line-grid__head">
         <span className="col-label">Consultant</span>
-        <span className="col-label">Base (₹)</span>
         <span className="col-label">Rate %</span>
         <span className="col-label">Fee</span>
         <span />
       </div>
 
       {consults.map((consult) => (
-        <ConsultRow key={consult.id} consult={consult} onChange={onChange} onRemove={onRemove} />
+        <ConsultRow
+          key={consult.id}
+          consult={consult}
+          principal={principal}
+          onChange={onChange}
+          onRemove={onRemove}
+        />
       ))}
 
       <div className="row-actions">

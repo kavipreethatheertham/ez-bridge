@@ -14,7 +14,7 @@ export const createSampleAnnexure = () => ({
     { id: 'f1', person: 'sathise', label: 'Case fees', amount: '0' }, // Sathise is recorded at ₹0
   ],
   consults: [
-    { id: 'c1', person: 'mohammad-idris', amount: '15000000', rate: '1' }, // 1% of ₹1,50,00,000
+    { id: 'c1', person: 'mohammad-idris', rate: '1' }, // 1% of the principal, ₹1,50,00,000
   ],
   // Eazee Bridge: a ₹7,50,000 pool split between Vivek and Sathise. It only feeds the
   // "Bridge split" tile for now; the Eazee Bridge section itself is added later.
