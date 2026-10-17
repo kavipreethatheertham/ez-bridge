@@ -31,7 +31,7 @@ export default function LoanSection({ form, loanSummary, onChange, onReset, onSa
       <div className="loan-fields">
         <Field label="Loan number" value={form.loanNo} onChange={(v) => onChange('loanNo', v)} />
         <Field
-          label="Amount (₹)"
+          label="Principal Amount (₹)"
           value={form.principal}
           onChange={(v) => onChange('principal', v)}
           inputMode="decimal"
