@@ -31,7 +31,7 @@ src/
 ├── App.jsx                       # page layout: wires the hook to the sections
 ├── components/
 │   ├── common/                   # reusable pieces (Field, PersonSelect, Pill)
-│   ├── layout/                   # AnnexureHeader, StatusBanner
+│   ├── layout/                   # StatusBanner
 │   ├── loan/                     # LoanSection
 │   ├── sharing/                  # SharingPartnersSection, PartnerRow, AllocationBar
 │   └── payout/                   # PayoutSection

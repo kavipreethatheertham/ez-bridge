@@ -1,4 +1,3 @@
-import AnnexureHeader from './components/layout/AnnexureHeader'
 import StatusBanner from './components/layout/StatusBanner'
 import LoanSection from './components/loan/LoanSection'
 import SharingPartnersSection from './components/sharing/SharingPartnersSection'
@@ -10,16 +9,15 @@ export default function App() {
 
   return (
     <main className="page">
-      <AnnexureHeader
-        loanNo={form.loanNo}
-        isReady={isReady}
+      {isReady && <StatusBanner loanNo={form.loanNo} loanSummary={loanSummary} />}
+
+      <LoanSection
+        form={form}
+        loanSummary={loanSummary}
+        onChange={actions.updateLoanField}
         onReset={actions.reset}
         onSave={actions.save}
       />
-
-      {isReady && <StatusBanner loanNo={form.loanNo} loanSummary={loanSummary} />}
-
-      <LoanSection form={form} loanSummary={loanSummary} onChange={actions.updateLoanField} />
 
       <SharingPartnersSection
         partners={form.partners}

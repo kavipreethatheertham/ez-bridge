@@ -1,7 +1,7 @@
 import { formatINR } from '../../utils/money'
 import './StatusBanner.css'
 
-/** Shown only after "Save annexure". Green when partners cover the full principal, amber otherwise. */
+/** Shown only after "Save loan". Green when partners cover the full principal, amber otherwise. */
 export default function StatusBanner({ loanNo, loanSummary }) {
   const { principal, partnerTotal, principalMatched } = loanSummary
 

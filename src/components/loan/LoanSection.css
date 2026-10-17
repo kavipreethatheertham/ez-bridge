@@ -1,3 +1,29 @@
+/* Heading + intro on the left, Reset sample / Save loan buttons on the right. */
+.loan-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.loan-head__text {
+  flex: 1 1 auto;
+  min-width: 0; /* lets the intro text wrap instead of pushing the buttons out */
+}
+
+.loan-head__actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  margin-top: -4px; /* centres the 32px buttons on the "Loan" heading line */
+}
+
+/* The Loan section is the first thing on the page now, so it does not need the extra top margin. */
+.loan-section:first-child {
+  margin-top: 0;
+}
+
 .loan-fields {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -6,7 +32,26 @@
 }
 
 @media (max-width: 800px) {
+  /* Tablet and mobile: heading and intro first, buttons on their own row below them. */
+  .loan-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .loan-head__actions {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
   .loan-fields {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Small phones: the two buttons share the full row evenly. */
+  .loan-head__actions button {
+    flex: 1;
   }
 }
