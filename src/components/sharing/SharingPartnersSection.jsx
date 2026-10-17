@@ -14,7 +14,7 @@ export default function SharingPartnersSection({
   return (
     <section className="card">
       <div className="card-head">
-        <h2>Sharing partners</h2>
+        <h2>Principal sharing partners</h2>
         <Pill active={loanSummary.principalMatched}>
           {loanSummary.principalMatched ? 'Allocated' : 'Open'}
         </Pill>
@@ -27,7 +27,7 @@ export default function SharingPartnersSection({
 
       <div className="partner-grid">
         <span className="col-label">Sharing partner</span>
-        <span className="col-label">Amount (₹)</span>
+        <span className="col-label">Principal Amount (₹)</span>
         <span className="col-label">Interest %</span>
         <span className="col-label">Interest amount</span>
         <span />
@@ -39,7 +39,7 @@ export default function SharingPartnersSection({
 
       <div className="row-actions">
         <button type="button" onClick={onAdd}>
-          Add sharing partner
+          Add principal sharing partner
         </button>
       </div>
 
