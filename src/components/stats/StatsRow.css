@@ -1,0 +1,46 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+/* Nothing sits above the tiles, so they do not need the extra top margin. */
+.stats:first-child {
+  margin-top: 0;
+}
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-card, none);
+}
+
+.stat b {
+  display: block;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Green only for a matched / healthy number, amber when something is open. */
+.stat.ok b {
+  color: var(--ok-ink, var(--ok));
+}
+
+.stat.warn b {
+  color: var(--warn-ink, var(--warn));
+}
+
+@media (max-width: 800px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}

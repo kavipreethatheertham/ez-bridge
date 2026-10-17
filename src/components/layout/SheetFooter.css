@@ -1,0 +1,16 @@
+.sheet-footer {
+  margin-top: 22px;
+}
+
+.sheet-footer__note {
+  background: var(--chip);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.sheet-footer__note strong {
+  display: block;
+  margin-bottom: 2px;
+}

@@ -1,0 +1,79 @@
+/*
+  Row layout shared by Case fees and Consultancy.
+  Desktop: one header row of labels, then one row per line, with the column widths of the HTML sheet.
+  Tablet and phone (800px and narrower): the header row is hidden and every cell shows its own label
+  above it, so each box is clear even when the rows are stacked.
+*/
+.line-grid {
+  display: grid;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.line-grid--fee {
+  grid-template-columns: 1fr 1fr 0.8fr 32px;
+}
+
+.line-grid--consult {
+  grid-template-columns: 1.5fr 1fr 0.6fr 1fr 32px;
+}
+
+.line-cell {
+  min-width: 0; /* lets a long value shrink inside its column instead of widening the page */
+}
+
+@media (max-width: 800px) {
+  .line-grid--fee,
+  .line-grid--consult {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 10px 12px;
+    margin-bottom: 0;
+  }
+
+  .line-grid__head {
+    display: none;
+  }
+
+  .line-cell::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: var(--faint);
+  }
+
+  /* The person dropdown takes the whole first line of each row. */
+  .line-grid__row > .line-cell:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* The remove button sits at the end of the row. */
+  .line-grid__row > .icon-btn {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
+
+  .line-grid--consult > .icon-btn {
+    grid-column: 2;
+  }
+
+  /* A thin line and some air between one row and the next. */
+  .line-grid__row + .line-grid__row {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 480px) {
+  .line-grid--fee,
+  .line-grid--consult {
+    grid-template-columns: 1fr;
+  }
+
+  .line-grid--consult > .icon-btn {
+    grid-column: 1;
+  }
+}
