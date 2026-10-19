@@ -1,7 +1,11 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { createSampleAnnexure } from '../data/sampleAnnexure'
 import { buildPayout, summarizeLoan } from '../utils/calculations'
 import { buildStats, summarizeBridge, totalConsultancy } from '../utils/summary'
+import { saveLoan } from '../services/loanService'
+
+// What the page shows after "Save loan": nothing, "Saving…", a success line or an error line.
+const IDLE_SAVE = { status: 'idle', message: '' }
 
 /**
  * One place that owns ALL the annexure state and the actions that change it.
@@ -11,11 +15,16 @@ export function useAnnexure() {
   const [form, setForm] = useState(createSampleAnnexure)
   const [isReady, setIsReady] = useState(false) // false = Draft, true = Ready (after Save)
   const [nextId, setNextId] = useState(3)
+  const [saveState, setSaveState] = useState(IDLE_SAVE) // result of the last "Save loan"
+  const editCount = useRef(0) // goes up on every change, so a save that ends late knows the sheet moved on
+  const isSaving = useRef(false) // true while a save is running
 
-  // Any edit moves the sheet back to "Draft".
+  // Any edit moves the sheet back to "Draft" and clears the last save message.
   const edit = (updater) => {
     setForm(updater)
     setIsReady(false)
+    setSaveState(IDLE_SAVE)
+    editCount.current += 1
   }
 
   // ---- Loan -------------------------------------------------------------
@@ -83,8 +92,22 @@ export function useAnnexure() {
   const reset = () => {
     setForm(createSampleAnnexure())
     setIsReady(false)
+    setSaveState(IDLE_SAVE)
+    editCount.current += 1
   }
-  const save = () => setIsReady(true) // Supabase insert/update goes here later
+
+  // Save loan: writes the Loan section (loan number, principal, interest %) to the Supabase `loans` table.
+  const save = async () => {
+    if (isSaving.current) return // ignore a second click while the first save is still running
+    isSaving.current = true
+    const editsAtStart = editCount.current
+    setSaveState({ status: 'saving', message: 'Saving…' })
+    const result = await saveLoan(form)
+    isSaving.current = false
+    if (editCount.current !== editsAtStart) return // edited while saving: stay on Draft
+    setIsReady(result.ok)
+    setSaveState({ status: result.ok ? 'saved' : 'error', message: result.message })
+  }
 
   // ---- Derived numbers (recalculated only when the form changes) ---------
   const loanSummary = useMemo(() => summarizeLoan(form), [form])
@@ -102,6 +125,7 @@ export function useAnnexure() {
   return {
     form,
     isReady,
+    saveState,
     loanSummary,
     payoutRows,
     stats,

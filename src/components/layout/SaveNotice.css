@@ -1,0 +1,23 @@
+.save-notice {
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  background: var(--chip);
+  color: var(--ink);
+  padding: 10px 12px;
+  font-size: 13px;
+  margin: 12px 0;
+  overflow-wrap: anywhere; /* a long database message wraps instead of widening the page */
+}
+
+.save-notice.saved {
+  background: var(--ok-bg);
+  border-color: var(--ok-line);
+  color: var(--ok-ink);
+}
+
+/* The only red on the page: used when the database refused or could not be reached. */
+.save-notice.error {
+  background: #fdecea;
+  border-color: #f1c0bb;
+  color: #8a1c1c;
+}

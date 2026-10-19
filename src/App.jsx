@@ -1,4 +1,5 @@
 import StatusBanner from './components/layout/StatusBanner'
+import SaveNotice from './components/layout/SaveNotice'
 import SheetFooter from './components/layout/SheetFooter'
 import StatsRow from './components/stats/StatsRow'
 import LoanSection from './components/loan/LoanSection'
@@ -8,10 +9,11 @@ import ConsultancySection from './components/consultancy/ConsultancySection'
 import { useAnnexure } from './hooks/useAnnexure'
 
 export default function App() {
-  const { form, isReady, loanSummary, stats, consultTotal, actions } = useAnnexure()
+  const { form, isReady, saveState, loanSummary, stats, consultTotal, actions } = useAnnexure()
 
   return (
     <main className="page">
+      <SaveNotice state={saveState} />
       {isReady && <StatusBanner loanNo={form.loanNo} loanSummary={loanSummary} />}
 
       <StatsRow stats={stats} />
