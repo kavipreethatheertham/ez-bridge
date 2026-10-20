@@ -23,7 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment files: they hold private keys and ids, so they must never be committed
 .env
 .env.*
 !.env.example
