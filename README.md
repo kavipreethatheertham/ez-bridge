@@ -8,26 +8,20 @@ The page has four sections and four summary tiles.
 
 | Section | What it holds |
 | --- | --- |
-<<<<<<< HEAD
 | Loan | Loan number, Principal Amount (₹), Interest % and the calculated interest amount |
 | Principal sharing partners | The partners, the amount each one shares and their interest %, with a bar that shows how much of the principal is shared |
 | Case fees | A fee assigned to a person |
 | Consultancy | One row per consultant: rate % and fee (Principal Amount × rate %), with the total |
-=======
-| Loan | Done |
-| Sharing partners | Done |
-| Case fees, Consultancy | Next |
-| Supabase backend | Next |
->>>>>>> origin/main
+| Supabase backend |  |
 
 The tiles are **Loan interest**, **Principal shared**, **Sharing interest** and **Bridge split**. The page opens with a sample loan so every number can be seen straight away.
 
 **Tech stack:** React 19, Vite 8, JavaScript, plain CSS, Supabase (`@supabase/supabase-js`) and oxlint.
 
 ## Prerequisites
-
 - **Node.js 20.19 or newer, or 22.12 or newer.** Check with `node -v`. npm comes with Node.js.
-- **Git**, to clone the repository.
+- Check git version: git --version
+- **Git**, to clone the repository: git clone (repo URL)
 - **A free Supabase account** at [supabase.com](https://supabase.com). It is needed only for **Save loan**; the sheet opens and calculates without it.
 
 ## Installation and local setup
