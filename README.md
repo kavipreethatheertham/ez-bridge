@@ -10,8 +10,7 @@ per person.
 | --- | --- |
 | Loan | Done |
 | Sharing partners | Done |
-| Payout by person | Done (sharing interest only) |
-| Case fees, Consultancy, Eazee Bridge | Next |
+| Case fees, Consultancy | Next |
 | Supabase backend | Next |
 
 ## Run it
