@@ -4,6 +4,7 @@
  */
 export const createSampleAnnexure = () => ({
   loanNo: 'LN0025',
+  borrowerName: '', // typed in by the user; the sample loan has none
   principal: '15000000', // ₹1,50,00,000
   loanRate: '10',
   partners: [

@@ -3,8 +3,8 @@ import { formatINR } from '../../utils/money'
 import './LoanSection.css'
 
 /**
- * Section 1: the loan header row. Loan number, amount, rate and the calculated interest.
- * The Reset sample / Save loan buttons sit on the right of the section heading.
+ * Section 1: the loan header row. Loan number, borrower name, amount, rate and the calculated
+ * interest. The Reset sample / Save loan buttons sit on the right of the section heading.
  */
 export default function LoanSection({ form, loanSummary, onChange, onReset, onSave }) {
   return (
@@ -30,6 +30,11 @@ export default function LoanSection({ form, loanSummary, onChange, onReset, onSa
 
       <div className="loan-fields">
         <Field label="Loan number" value={form.loanNo} onChange={(v) => onChange('loanNo', v)} />
+        <Field
+          label="Borrower name"
+          value={form.borrowerName}
+          onChange={(v) => onChange('borrowerName', v)}
+        />
         <Field
           label="Principal Amount (₹)"
           value={form.principal}
