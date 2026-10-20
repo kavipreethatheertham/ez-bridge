@@ -2,8 +2,9 @@ import { supabase, isSupabaseConfigured } from '../lib/supabaseClient'
 import { toNumber } from '../utils/money'
 
 /** The Loan section as one row of the `loans` table (column names match the SQL in the setup guide). */
-const toLoanRow = ({ loanNo, principal, loanRate }) => ({
+const toLoanRow = ({ loanNo, borrowerName, principal, loanRate }) => ({
   loan_no: String(loanNo ?? '').trim(),
+  borrower_name: String(borrowerName ?? '').trim() || null, // a blank box is stored as empty (null), not as ''
   principal: toNumber(principal),
   loan_rate: toNumber(loanRate),
 })
@@ -16,6 +17,9 @@ const adviceFor = (error, status) => {
   if (error.code === 'PGRST205' || error.code === '42P01') {
     return ' The loans table was not found: run the SQL from the Supabase setup guide.'
   }
+  if (error.code === 'PGRST204' || error.code === '42703') {
+    return " The loans table has no borrower_name column yet: add it in the Supabase SQL Editor (if you just added it, run notify pgrst, 'reload schema'; there too), then save again."
+  }
   if (status === 401) {
     return ' Check VITE_SUPABASE_PUBLISHABLE_KEY in .env: copy the Publishable key again.'
   }
@@ -23,7 +27,7 @@ const adviceFor = (error, status) => {
 }
 
 /**
- * Saves the Loan section (loan number, principal, interest %) to the Supabase `loans` table.
+ * Saves the Loan section (loan number, borrower name, principal, interest %) to the Supabase `loans` table.
  * A loan number that already exists is updated, never duplicated.
  * It never throws: it always returns { ok, message } so the page can show the result.
  */

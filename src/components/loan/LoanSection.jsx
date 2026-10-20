@@ -36,7 +36,7 @@ export default function LoanSection({ form, loanSummary, onChange, onReset, onSa
           onChange={(v) => onChange('borrowerName', v)}
         />
         <Field
-          label="Principal Amount (₹)"
+          label="Principal amount (₹)"
           value={form.principal}
           onChange={(v) => onChange('principal', v)}
           inputMode="decimal"

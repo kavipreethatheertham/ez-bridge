@@ -27,7 +27,7 @@ export default function SharingPartnersSection({
 
       <div className="partner-grid">
         <span className="col-label">Sharing partner</span>
-        <span className="col-label">Principal Amount (₹)</span>
+        <span className="col-label">Principal amount (₹)</span>
         <span className="col-label">Interest %</span>
         <span className="col-label">Interest amount</span>
         <span />
