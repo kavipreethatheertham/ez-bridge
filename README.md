@@ -8,13 +8,11 @@ The page has four sections and four summary tiles.
 
 | Section | What it holds |
 | --- | --- |
-<<<<<<< HEAD
 | Loan | Loan number, Principal Amount (₹), Interest % and the calculated interest amount |
 | Principal sharing partners | The partners, the amount each one shares and their interest %, with a bar that shows how much of the principal is shared |
 | Case fees | A fee assigned to a person |
 | Consultancy | One row per consultant: rate % and fee (Principal Amount × rate %), with the total |
 | Supabase backend |  |
->>>>>>> origin/main
 
 The tiles are **Loan interest**, **Principal shared**, **Sharing interest** and **Bridge split**. The page opens with a sample loan so every number can be seen straight away.
 
