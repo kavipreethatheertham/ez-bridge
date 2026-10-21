@@ -1,0 +1,89 @@
+/* Heading and the "n saved" label, like the head of Principal sharing partners. */
+.loan-list__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/*
+  Same idea as the partner rows: one header row of labels, then one row per loan, on a 5-column grid.
+  Tablet and phone (800px and narrower): the header row is hidden and every cell shows its own label.
+*/
+.loan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 0.8fr 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.loan-grid__head {
+  margin-bottom: 4px;
+}
+
+.loan-grid__row {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.loan-cell {
+  min-width: 0; /* lets a long name shrink inside its column instead of widening the page */
+  overflow-wrap: anywhere;
+}
+
+.loan-id {
+  color: var(--navy);
+  font-weight: 650;
+}
+
+.loan-empty {
+  color: var(--faint);
+}
+
+.loan-link {
+  color: var(--slate);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.loan-link:hover {
+  color: var(--accent-strong);
+}
+
+.loan-link:focus-visible {
+  outline: 2px solid var(--slate);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (max-width: 800px) {
+  .loan-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+    align-items: start;
+  }
+
+  .loan-grid__head {
+    display: none;
+  }
+
+  .loan-grid__row {
+    padding: 12px 0;
+  }
+
+  .loan-cell::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--faint);
+  }
+}
+
+@media (max-width: 480px) {
+  .loan-grid {
+    grid-template-columns: 1fr;
+  }
+}

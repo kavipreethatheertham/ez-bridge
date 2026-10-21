@@ -1,0 +1,8 @@
+/* The details page reuses the Loan section classes (.loan-head, .loan-fields) of the create page. */
+.loan-details__note {
+  margin-top: 14px;
+}
+
+.loan-details__problem .row-actions {
+  margin-top: 12px;
+}
