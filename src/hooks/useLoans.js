@@ -25,7 +25,7 @@ export function useLoanList() {
   return result
 }
 
-/** One saved loan for the details page: null while the answer is on its way. */
+/** One saved loan for the sheet that View Details opens: null while the answer is on its way. */
 export function useLoanDetails(loanNo) {
   const [answer, setAnswer] = useState(null)
 

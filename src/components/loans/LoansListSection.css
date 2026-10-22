@@ -6,6 +6,18 @@
   margin-bottom: 8px;
 }
 
+/* The "n saved" label and the New loan button, on the right of the heading. */
+.loan-list__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* On the main page the list card is the first thing on the page, so it does not need the extra top margin. */
+.page > .card:first-child {
+  margin-top: 0;
+}
+
 /*
   Same idea as the partner rows: one header row of labels, then one row per loan, on a 5-column grid.
   Tablet and phone (800px and narrower): the header row is hidden and every cell shows its own label.

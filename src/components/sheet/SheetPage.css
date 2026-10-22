@@ -1,0 +1,8 @@
+/* The Back to list button above the sheet. The tiles below it bring their own top margin. */
+.sheet-nav {
+  display: flex;
+}
+
+.sheet-problem .row-actions {
+  margin-top: 12px;
+}

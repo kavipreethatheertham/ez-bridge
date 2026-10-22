@@ -1,7 +1,7 @@
 import Pill from '../common/Pill'
 import SaveNotice from '../layout/SaveNotice'
 import { useLoanList } from '../../hooks/useLoans'
-import { detailsPath } from '../../lib/route'
+import { detailsPath, goTo, newPath } from '../../lib/route'
 import { formatINR } from '../../utils/money'
 import './LoansListSection.css'
 
@@ -26,7 +26,7 @@ export default function LoansListSection() {
   } else if (count === 0) {
     body = (
       <p className="hint">
-        No loans are saved yet. Fill in the Loan section above and click Save loan.
+        No loans are saved yet. Click New loan, fill in the sheet and click Save loan.
       </p>
     )
   } else {
@@ -87,8 +87,13 @@ export default function LoansListSection() {
   return (
     <section className="card">
       <div className="loan-list__head">
-        <h2>Loans</h2>
-        {count > 0 && <Pill>{count} saved</Pill>}
+        <h2>Loan List</h2>
+        <div className="loan-list__actions">
+          {count > 0 && <Pill>{count} saved</Pill>}
+          <button type="button" className="primary" onClick={() => goTo(newPath())}>
+            New loan
+          </button>
+        </div>
       </div>
 
       <p className="hint">{hint}</p>

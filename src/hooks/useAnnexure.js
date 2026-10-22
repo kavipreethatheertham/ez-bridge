@@ -7,12 +7,27 @@ import { saveLoan } from '../services/loanService'
 // What the page shows after "Save loan": nothing, "Saving…", a success line or an error line.
 const IDLE_SAVE = { status: 'idle', message: '' }
 
+// The sheet a page starts with: the sample sheet, or (View Details) the sample sheet with the Loan
+// section filled with a loan saved in the database. Only the Loan section is stored there.
+const startingForm = (savedLoan) => {
+  const sample = createSampleAnnexure()
+  if (!savedLoan) return sample
+  return {
+    ...sample,
+    loanNo: savedLoan.loanNo,
+    borrowerName: savedLoan.borrowerName,
+    principal: String(savedLoan.principal),
+    loanRate: String(savedLoan.loanRate),
+  }
+}
+
 /**
  * One place that owns ALL the annexure state and the actions that change it.
  * Components only receive data + callbacks, so they stay simple.
+ * `savedLoan` is optional: View Details passes a loan read from the database to start from.
  */
-export function useAnnexure() {
-  const [form, setForm] = useState(createSampleAnnexure)
+export function useAnnexure(savedLoan) {
+  const [form, setForm] = useState(() => startingForm(savedLoan))
   const [isReady, setIsReady] = useState(false) // false = Draft, true = Ready (after Save)
   const [nextId, setNextId] = useState(3)
   const [saveState, setSaveState] = useState(IDLE_SAVE) // result of the last "Save loan"

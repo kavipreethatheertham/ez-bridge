@@ -1,72 +1,30 @@
 import { useEffect } from 'react'
-import StatusBanner from './components/layout/StatusBanner'
-import SaveNotice from './components/layout/SaveNotice'
-import SheetFooter from './components/layout/SheetFooter'
-import StatsRow from './components/stats/StatsRow'
-import LoanSection from './components/loan/LoanSection'
 import LoansListSection from './components/loans/LoansListSection'
-import LoanDetails from './components/loans/LoanDetails'
-import SharingPartnersSection from './components/sharing/SharingPartnersSection'
-import CaseFeesSection from './components/fees/CaseFeesSection'
-import ConsultancySection from './components/consultancy/ConsultancySection'
-import { useAnnexure } from './hooks/useAnnexure'
+import SheetPage from './components/sheet/SheetPage'
 import { useRoute } from './hooks/useRoute'
 
+/**
+ * Two pages, told apart by the address after the # (see src/lib/route.js):
+ *   the main page (#/)      only the Loan List, nothing to type in
+ *   the sheet page          stats, Loan, partners, fees, consultancy and the footer note, all editable:
+ *                           #/new for a new loan, #/loans/LN0025 for a saved loan (View Details)
+ */
 export default function App() {
-  const { form, isReady, saveState, loanSummary, stats, consultTotal, actions } = useAnnexure()
   const route = useRoute()
 
-  // A page change starts at the top. The create page keeps what was typed while a loan's details are open.
+  // A page change starts at the top.
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [route.name, route.loanNo])
 
-  if (route.name === 'details') {
-    return <LoanDetails key={route.loanNo} loanNo={route.loanNo} />
+  if (route.name === 'home') {
+    return (
+      <main className="page">
+        <LoansListSection />
+      </main>
+    )
   }
 
-  return (
-    <main className="page">
-      <SaveNotice state={saveState} />
-      {isReady && <StatusBanner loanNo={form.loanNo} loanSummary={loanSummary} />}
-
-      <StatsRow stats={stats} />
-
-      <LoanSection
-        form={form}
-        loanSummary={loanSummary}
-        onChange={actions.updateLoanField}
-        onReset={actions.reset}
-        onSave={actions.save}
-      />
-
-      <LoansListSection />
-
-      <SharingPartnersSection
-        partners={form.partners}
-        loanSummary={loanSummary}
-        onChange={actions.updatePartner}
-        onAdd={actions.addPartner}
-        onRemove={actions.removePartner}
-      />
-
-      <CaseFeesSection
-        fees={form.fees}
-        onChange={actions.updateFee}
-        onAdd={actions.addFee}
-        onRemove={actions.removeFee}
-      />
-
-      <ConsultancySection
-        consults={form.consults}
-        principal={loanSummary.principal}
-        total={consultTotal}
-        onChange={actions.updateConsult}
-        onAdd={actions.addConsult}
-        onRemove={actions.removeConsult}
-      />
-
-      <SheetFooter />
-    </main>
-  )
+  // A new key gives every loan (and New loan) its own fresh sheet.
+  return <SheetPage key={route.loanNo ?? 'new'} loanNo={route.loanNo} />
 }
